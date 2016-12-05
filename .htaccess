@@ -1,0 +1,10 @@
+# Apache for "Don't look at me."
+Options -Indexes
+Options -MultiViews
+    RewriteEngine On
+    RewriteBase /  
+    RewriteCond %{HTTP_HOST} $ [NC]
+    RewriteCond %{REQUEST_URI} !/public [NC]
+    #RewriteRule (.*?)index\.php/*(.*) public/$1$2 [R=301,NE,L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ /encuestas-app/public/$1 [R=301,L]
