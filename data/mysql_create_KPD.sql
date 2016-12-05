@@ -2229,17 +2229,17 @@ updated_at TIMESTAMP default 0);
 
 CREATE UNIQUE INDEX cuestionario_usuario ON t_csc_pag3(CUEST,usucre);
 
-delimiter #
-CREATE TRIGGER registra_cuestionario 
-AFTER INSERT ON t_csc_pag1 
-for each row 
-begin
-INSERT INTO t_csc_pag2 (ID,CUEST,usucre) 
-VALUES (new.ID, new.CUEST, new.usucre);
-INSERT INTO t_csc_pag3 (ID,CUEST,usucre) 
-VALUES (new.ID, new.CUEST, new.usucre);
-END 
-#
+-- delimiter #
+-- CREATE TRIGGER registra_cuestionario 
+-- AFTER INSERT ON t_csc_pag1 
+-- for each row 
+-- begin
+-- INSERT INTO t_csc_pag2 (ID,CUEST,usucre) 
+-- VALUES (new.ID, new.CUEST, new.usucre);
+-- INSERT INTO t_csc_pag3 (ID,CUEST,usucre) 
+-- VALUES (new.ID, new.CUEST, new.usucre);
+-- END 
+-- #
 
 CREATE VIEW marco_usuarios AS 
 SELECT t.id, t.usuario AS usuario_id, u.usuario AS usuario, s.codigo, 
